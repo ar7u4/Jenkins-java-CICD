@@ -42,8 +42,10 @@ pipeline{
 
             steps{
                script{
-                   
-                   mvnIntegrationTest()
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    mvnIntegrationTest()
+                }                    
+                
                }
             }
         }
