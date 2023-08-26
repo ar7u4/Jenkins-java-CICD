@@ -23,17 +23,19 @@ pipeline{
             )
             }
         }
-        //  stage('Unit Test maven'){
+         stage('Unit Test maven'){
          
-        // ///when { expression {  params.action == 'create' } }
-
-        //     steps{
-        //        script{
+        ///when { expression {  params.action == 'create' } }
+        
+            steps{
+               script{
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    mvnTest()
+                } 
                    
-        //            mvnTest()
-        //        }
-        //     }
-        // }
+               }
+            }
+        }
         stage('Integration Test maven'){
          
         ///when { expression {  params.action == 'create' } }
