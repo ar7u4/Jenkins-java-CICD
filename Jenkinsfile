@@ -14,7 +14,7 @@ pipeline {
          
         stage('Git Checkout') {
                     when { expression {  params.action == 'create' } }
-            steps{
+            steps {
             gitCheckout(
                 branch: "main",
                 url: "https://github.com/ar7u4/Jenkins-java-CICD.git"
