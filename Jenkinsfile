@@ -1,4 +1,4 @@
-pipeline
+pipeline{
   agent any
   parameters{
 
@@ -17,3 +17,4 @@ pipeline
         }
     }
   }
+}
