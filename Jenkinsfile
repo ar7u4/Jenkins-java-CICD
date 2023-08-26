@@ -1,13 +1,14 @@
 @Library('my-shared-lib') _
 
-pipeline {
+pipeline{
     agent any
-    stages {
-        stage('Git Checkout') {
-            steps {
+    
+    stages{
+        stage('Checkout') {
+            steps{
             gitCheckout(
-               branch: "main"
-               url: "https://github.com/ar7u4/Jenkins-java-CICD.git"
+              branch: "main"
+              url: "https://github.com/ar7u4/Jenkins-java-CICD.git"
             )
             }    
         }
