@@ -1,12 +1,27 @@
-pipeline
-  agent any
+@Library('my-shared-lib') _
 
-  stages{
-    stage('Git Checkout'){
-        steps{
-        gitCheckout(
-            git branch: 'main', url: 'https://github.com/ar7u4/Jenkins-java-CICD.git'
-        )
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Use the custom Git checkout step from the shared library
+                gitCheckout([
+                    branch: 'main', // Set the desired branch
+                    url: 'https://github.com/ar7u4/Jenkins-java-CICD.git'
+                ])
+            }
         }
+        stage('Unit Test maven'){
+           steps {
+                script {
+                  mvnTest()
+                }
+                
+            }
+        }
+        
     }
-  }
+    
+}
